@@ -40,11 +40,11 @@ public class CompanyRegistrationServlet extends HttpServlet {
 		if(insertStatus == 1)
 		{
 			// success
-			res.sendRedirect("/RegistrationEx/companyRegistrationSuccessPage");
+			res.sendRedirect("/JobSeekerApp/companyRegistrationSuccessPage.html");
 		} else
 		{
 			// fail
-			res.sendRedirect("/RegistrationEx/companyRegistrationFailurePage");
+			res.sendRedirect("/JobSeekerApp/companyRegistrationFailurePage.html");
 		}
 	}
 
