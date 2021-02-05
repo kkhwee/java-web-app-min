@@ -1,0 +1,17 @@
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:39:59 +0530] "GET /Akhil/home.jsp HTTP/1.1" 200 3564
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:00 +0530] "GET /Akhil/css/table.css HTTP/1.1" 200 3313
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:00 +0530] "GET /Akhil/css/input.css HTTP/1.1" 200 1102
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:00 +0530] "GET /Akhil/css/nivo-slider.css HTTP/1.1" 200 1374
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:00 +0530] "GET /Akhil/js/jquery.nivo.slider.js HTTP/1.1" 200 13988
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:00 +0530] "GET /Akhil/js/my.validations.js HTTP/1.1" 200 2651
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:00 +0530] "GET /Akhil/js/jquery.min.js HTTP/1.1" 200 72174
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:00 +0530] "GET /Akhil/css/tooplate_style.css HTTP/1.1" 200 7760
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:01 +0530] "GET /Akhil/images/slideshow/wall.jpg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:01 +0530] "GET /Akhil/images/tooplate_body.jpg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:01 +0530] "GET /Akhil/images/tooplate_menu_hover.png HTTP/1.1" 200 3655
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:01 +0530] "GET /Akhil/images/tooplate_wrapper.jpg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:01 +0530] "GET /Akhil/images/tooplate_middle.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:01 +0530] "GET /Akhil/images/slideshow/car.jpg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:01 +0530] "GET /Akhil/images/slideshow/bench.jpg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:02 +0530] "GET /Akhil/images/tooplate_main_top.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [07/Mar/2017:10:40:02 +0530] "GET /favicon.ico HTTP/1.1" 200 21630
