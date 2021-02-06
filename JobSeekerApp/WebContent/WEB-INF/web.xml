@@ -8,6 +8,20 @@
 		<filter-name>CompanyRegistrationFilter</filter-name>
 		<filter-class>CompanyRegistrationFilter</filter-class>
 	</filter>
+	<filter>
+		<description>
+		</description>
+		<display-name>JobSeekerFilter</display-name>
+		<filter-name>JobSeekerFilter</filter-name>
+		<filter-class>JobSeekerFilter</filter-class>
+	</filter>
+	<filter>
+		<description>
+		</description>
+		<display-name>ChangePasswordFilter</display-name>
+		<filter-name>ChangePasswordFilter</filter-name>
+		<filter-class>ChangePasswordFilter</filter-class>
+	</filter>
 	<filter-mapping>
 		<filter-name>CompanyRegistrationFilter</filter-name>
 		<url-pattern>/CompanyRegistrationFilter</url-pattern>
@@ -17,6 +31,24 @@
 		<servlet-name>CompanyRegistrationServlet</servlet-name>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
+	<filter-mapping>
+		<filter-name>JobSeekerFilter</filter-name>
+		<url-pattern>/JobSeekerFilter</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>JobSeekerFilter</filter-name>
+		<servlet-name>Register</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ChangePasswordFilter</filter-name>
+		<url-pattern>/ChangePasswordFilter</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ChangePasswordFilter</filter-name>
+		<servlet-name>ChangePassword</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
 	<servlet>
 		<description>
 		</description>
@@ -24,9 +56,42 @@
 		<servlet-name>CompanyRegistrationServlet</servlet-name>
 		<servlet-class>com.avensys.controller.CompanyRegistrationServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>Login</display-name>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>com.avensys.controller.Login</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>Register</display-name>
+		<servlet-name>Register</servlet-name>
+		<servlet-class>com.avensys.controller.Register</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>ChangePassword</display-name>
+		<servlet-name>ChangePassword</servlet-name>
+		<servlet-class>com.avensys.controller.ChangePassword</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>CompanyRegistrationServlet</servlet-name>
 		<url-pattern>/CompanyRegistrationServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Register</servlet-name>
+		<url-pattern>/Register</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChangePassword</servlet-name>
+		<url-pattern>/ChangePassword</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

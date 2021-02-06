@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <script> 
+          
+            // Function to check Whether both passwords 
+            // is same or not. 
+            function checkPassword(form) { 
+                password1 = form.password.value; 
+                password2 = form.confirmPassword.value; 
+  
+                // If password not entered 
+                if (password1 == '') 
+                    alert ("Please enter Password"); 
+                      
+                // If confirm password not entered 
+                else if (password2 == '') 
+                    alert ("Please enter confirm password"); 
+                      
+                // If Not same return False.     
+                else if (password1 != password2) { 
+                    alert ("\nPassword did not match: Please try again...") 
+                    return false; 
+                } 
+  
+                // If same return True. 
+                else{ 
+                    alert("Password Match: Welcome to GeeksforGeeks!") 
+                    return true; 
+                } 
+            } 
+        </script> 
+<meta charset="ISO-8859-1">
+<title>Register Account Page</title>
+</head>
+<body>
+<form onSubmit="return checkPassword(this)" action="/JobSeekerApp/Register">
+	username: <input type="text" name="username"></input>
+	email: <input type="text" name="email"></input>
+	password: <input type="text" name="password"></input>
+	confirm password: <input type="text" name="confirmPassword"></input>
+	<input type="hidden" value="JobSeeker" name="accountType"></input>
+	<input type="submit" name="Login User"></input>
+</form>
+</body>
+</html>
