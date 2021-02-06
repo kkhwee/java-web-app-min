@@ -10,14 +10,14 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet Filter implementation class CompanyRegistrationFilter
+ * Servlet Filter implementation class CompanyLoginFilter
  */
-public class CompanyRegistrationFilter implements Filter {
+public class CompanyLoginFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public CompanyRegistrationFilter() {
+    public CompanyLoginFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -32,18 +32,17 @@ public class CompanyRegistrationFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		String user = request.getParameter("user");
+
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		System.out.println(user);
 		System.out.println(email);
 		System.out.println(password);
 		
-		if(user.length() == 0 || email.length() == 0 || password.length() == 0)
+		if(email.length() == 0 || password.length() == 0)
 		{
 			// need to type cast ServletResponse to HttpServletResponse
-			((HttpServletResponse) response).sendRedirect("/JobSeekerApp/Registration/companyRegistrationEmptyFieldError.html");
+			((HttpServletResponse) response).sendRedirect("/JobSeekerApp/companyLoginEmptyFieldError.html");
 		} 
 		else
 		{
@@ -61,7 +60,6 @@ public class CompanyRegistrationFilter implements Filter {
 //			// pass the request along the filter chain
 //			chain.doFilter(request, response);
 //		}
-		
 	}
 
 	/**

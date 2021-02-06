@@ -13,10 +13,7 @@ import com.avensys.model.CompanyRegistrationModel;
  */
 public class CompanyRegistrationServlet extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
-	{
-		
-		System.out.println("Insert Data Servlet");
-		
+	{	
 		String user;
 		String email;
 		String password;
@@ -40,11 +37,11 @@ public class CompanyRegistrationServlet extends HttpServlet {
 		if(insertStatus == 1)
 		{
 			// success
-			res.sendRedirect("/RegistrationEx/companyRegistrationSuccessPage");
+			res.sendRedirect("/JobSeekerApp/Registration/companyRegistrationSuccessPage.html");
 		} else
 		{
 			// fail
-			res.sendRedirect("/RegistrationEx/companyRegistrationFailurePage");
+			res.sendRedirect("/JobSeekerApp/Registration/companyRegistrationFailurePage.html");
 		}
 	}
 

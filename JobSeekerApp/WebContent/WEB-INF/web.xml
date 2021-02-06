@@ -22,6 +22,13 @@
 		<filter-name>ChangePasswordFilter</filter-name>
 		<filter-class>ChangePasswordFilter</filter-class>
 	</filter>
+	<filter>
+		<description>
+		</description>
+		<display-name>CompanyLoginFilter</display-name>
+		<filter-name>CompanyLoginFilter</filter-name>
+		<filter-class>CompanyLoginFilter</filter-class>
+	</filter>
 	<filter-mapping>
 		<filter-name>CompanyRegistrationFilter</filter-name>
 		<url-pattern>/CompanyRegistrationFilter</url-pattern>
@@ -30,6 +37,10 @@
 		<filter-name>CompanyRegistrationFilter</filter-name>
 		<servlet-name>CompanyRegistrationServlet</servlet-name>
 		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CompanyLoginFilter</filter-name>
+		<url-pattern>/CompanyLoginFilter</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>JobSeekerFilter</filter-name>
@@ -59,6 +70,13 @@
 	<servlet>
 		<description>
 		</description>
+		<display-name>CompanyLoginServlet</display-name>
+		<servlet-name>CompanyLoginServlet</servlet-name>
+		<servlet-class>com.avensys.controller.CompanyLoginServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
 		<display-name>Login</display-name>
 		<servlet-name>Login</servlet-name>
 		<servlet-class>com.avensys.controller.Login</servlet-class>
@@ -80,6 +98,10 @@
 	<servlet-mapping>
 		<servlet-name>CompanyRegistrationServlet</servlet-name>
 		<url-pattern>/CompanyRegistrationServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CompanyLoginServlet</servlet-name>
+		<url-pattern>/CompanyLoginServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Login</servlet-name>
