@@ -16,16 +16,20 @@ public class CompanyChangePasswordServlet extends HttpServlet {
 
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
 	{
-		//String userName;
+		String email;
 		String oldPassword;
 		String newPassword;
 		String confirmPassword;
 		
-		//HttpSession session = req.getSession();
+		HttpSession session = req.getSession();
 	
 		oldPassword = req.getParameter("oldpwd");
 		newPassword = req.getParameter("newpwd");
 		confirmPassword = req.getParameter("conpwd");
+		
+		email = (String) session.getAttribute("email");
+		
+		System.out.println("Session user: " + email);
 		
 		//userName = (String) session.getAttribute("userName");
 
@@ -44,7 +48,7 @@ public class CompanyChangePasswordServlet extends HttpServlet {
 		m.setNewPassword(newPassword);
 		m.setConfirmPassword(confirmPassword);
 		
-		int result = m.changeCompanyPassword();
+		int result = m.changeCompanyPassword(email);
 		
 		if(result == 1)
 		{

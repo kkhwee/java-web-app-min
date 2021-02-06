@@ -28,7 +28,7 @@ public class CompanyChangePasswordModel {
 		}
 	}
 	
-	public int changeCompanyPassword()
+	public int changeCompanyPassword(String email)
 	{
 		try
 		{
@@ -39,6 +39,9 @@ public class CompanyChangePasswordModel {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, newPassword);
 			pstmt.setString(2, email);
+			
+			System.out.println(newPassword);
+			System.out.println(email);
 			
 			return pstmt.executeUpdate();
 		} catch(Exception e)

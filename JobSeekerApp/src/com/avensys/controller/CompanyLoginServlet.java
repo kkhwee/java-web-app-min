@@ -21,7 +21,7 @@ public class CompanyLoginServlet extends HttpServlet {
 		
 		try
 		{
-			//String userName;
+			String userName;
 			String email;
 			String password;
 			//String accountType;
@@ -34,6 +34,7 @@ public class CompanyLoginServlet extends HttpServlet {
 			// connect to database
 			m.connect();
 			
+			//m.setUserName(userName);
 			m.setEmail(email);
 			m.setPassword(password);
 			
