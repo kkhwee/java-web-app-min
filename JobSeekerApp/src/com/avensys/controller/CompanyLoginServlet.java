@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.avensys.model.CompanyLoginModel;
+import com.avensys.model.CompanyModel;
 import com.avensys.model.CompanyRegistrationModel;
 
 /**
@@ -29,7 +30,8 @@ public class CompanyLoginServlet extends HttpServlet {
 			email = req.getParameter("email");
 			password = req.getParameter("password");
 			
-			CompanyLoginModel m = new CompanyLoginModel();
+			//CompanyLoginModel m = new CompanyLoginModel();
+			CompanyModel m = new CompanyModel();
 			
 			// connect to database
 			m.connect();
@@ -43,16 +45,12 @@ public class CompanyLoginServlet extends HttpServlet {
 			if(m.loginCompany() == 1)
 			{
 				// success
-				//userName = m.getUserName();
-				//accountType = m.getAccountType();
-				email = m.getEmail();
-				//password = m.getPassword();
 				
-				
-				//session.setAttribute("userName", userName);
+				// Once login successfully, set all attributes for later use
+				session.setAttribute("userName", m.obtainUserName());
 				session.setAttribute("email", email);
 				session.setAttribute("password", password);
-				//session.setAttribute("accountType", accountType); // have to get data from log in file
+				session.setAttribute("accountType", m.getAccountType()); // have to get data from log in file
 				
 				// change this to home page later
 				res.sendRedirect("/JobSeekerApp/Homepage/companyHomePage.jsp");

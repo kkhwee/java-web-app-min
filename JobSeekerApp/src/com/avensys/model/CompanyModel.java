@@ -4,16 +4,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class CompanyModel {
 
 	private String userName;
 	private String email;
 	private String password;
-	private String accountType;
+	private final String accountType = "Company";
 	
 	Connection con;
-	PreparedStatement pstmt;
 	
 	public void connect()
 	{
@@ -45,8 +45,8 @@ public class CompanyModel {
 				userName = rs.getString(1);
 				email = rs.getString(2);
 				password = rs.getString(3);
-				accountType = rs.getString(4);
 				
+				return 1;
 			}
 			
 		} catch(Exception e)
@@ -70,8 +70,14 @@ public class CompanyModel {
 			pstmt.setString(3, password);
 			pstmt.setString(4, accountType);
 			
-			return pstmt.executeUpdate();
+			System.out.println("Registration: " + userName);
+			System.out.println("Registration: " + email);
+			System.out.println("Registration: " + password);
 			
+			int result = pstmt.executeUpdate();
+			
+			System.out.println("Result Registration: " + result);
+			return result;
 		} catch(Exception e)
 		{
 			e.printStackTrace();
@@ -80,6 +86,55 @@ public class CompanyModel {
 		return 0;
 	}
 	
+	public int changeCompanyPassword(String newPassword)
+	{
+		try
+		{
+//			if(oldPassword != .getAttribute("password"));
+			
+			String sql = "UPDATE user SET password=? WHERE username=?";
+			
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, newPassword);
+			pstmt.setString(2, userName);
+			
+			System.out.println(newPassword);
+			System.out.println(userName);
+			
+			if( pstmt.executeUpdate() == 1)
+			{
+				setPassword(newPassword);
+				return 1;
+			}
+		} catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	public String obtainUserName()
+	{
+		
+		try {
+			String sql = "SELECT username FROM user WHERE email=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, email);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				return rs.getString(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	public String getUserName() {
 		return userName;
@@ -107,9 +162,5 @@ public class CompanyModel {
 	
 	public String getAccountType() {
 		return accountType;
-	}
-	
-	public void setAccountType(String accountType) {
-		this.accountType = accountType;
 	}
 }

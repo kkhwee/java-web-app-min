@@ -7,6 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-There is an error changing password.
+<p>Error changing password. Please make sure the followings:</p> </br>
+
+<u1>
+	<li>The old password you've entered match your current password.</li>
+	<li>The new password matches the confirm password.</li>
+</u1>
+
+</br>
+
+<button type="button" onClick=window.location.href="/JobSeekerApp/Homepage/changePasswordPage.jsp">Try again</button>
 </body>
 </html>

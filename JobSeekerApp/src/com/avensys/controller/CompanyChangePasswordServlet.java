@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.avensys.model.CompanyChangePasswordModel;
+import com.avensys.model.CompanyModel;
 
 /**
  * Servlet implementation class CompanyChangePasswordServlet
@@ -16,43 +17,47 @@ public class CompanyChangePasswordServlet extends HttpServlet {
 
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
 	{
-		String email;
+		String userName;
+		//String email;
 		String oldPassword;
 		String newPassword;
 		String confirmPassword;
 		
 		HttpSession session = req.getSession();
 	
+		// Get parameters from user input
 		oldPassword = req.getParameter("oldpwd");
 		newPassword = req.getParameter("newpwd");
 		confirmPassword = req.getParameter("conpwd");
 		
-		email = (String) session.getAttribute("email");
-		
-		System.out.println("Session user: " + email);
-		
-		//userName = (String) session.getAttribute("userName");
+		userName = (String) session.getAttribute("userName");
 
-//		if(oldPassword != (String) session.getAttribute("password"))
-//		{
-//			System.out.println("Password different");
-//			// User verification failed
-//			res.sendRedirect("/JobSeekerApp/companyChangePasswordError.jsp");
-//		}
-//		
-		CompanyChangePasswordModel m = new CompanyChangePasswordModel();
+		// old password does not match
+		if(!oldPassword.equals((String) session.getAttribute("password")))
+		{
+			res.sendRedirect("/JobSeekerApp/Homepage/companyChangePasswordErrorPage.jsp");
+			return;
+		}
+		
+		// new password does not match confirm password
+		if(!newPassword.equals(confirmPassword))
+		{
+			res.sendRedirect("/JobSeekerApp/Homepage/companyChangePasswordErrorPage.jsp");
+			return;
+		}
+
+		CompanyModel m = new CompanyModel();
 		
 		m.connect();
 		
-		m.setOldPassword(oldPassword);
-		m.setNewPassword(newPassword);
-		m.setConfirmPassword(confirmPassword);
+		m.setUserName(userName);
 		
-		int result = m.changeCompanyPassword(email);
+		int result = m.changeCompanyPassword(newPassword);
 		
 		if(result == 1)
 		{
 			// change password success
+			session.setAttribute( "password", newPassword);
 			res.sendRedirect("/JobSeekerApp/Homepage/companyHomePage.jsp");
 		}
 		else
