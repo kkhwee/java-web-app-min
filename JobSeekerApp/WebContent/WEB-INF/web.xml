@@ -22,6 +22,13 @@
 		<filter-name>CompanyChangePasswordFilter2</filter-name>
 		<filter-class>CompanyChangePasswordFilter2</filter-class>
 	</filter>
+	<filter>
+		<description>
+		</description>
+		<display-name>CreateJobListingFilter</display-name>
+		<filter-name>CreateJobListingFilter</filter-name>
+		<filter-class>CreateJobListingFilter</filter-class>
+	</filter>
 	<filter-mapping>
 		<filter-name>CompanyRegistrationFilter</filter-name>
 		<url-pattern>/CompanyRegistrationFilter</url-pattern>
@@ -42,6 +49,15 @@
 	<filter-mapping>
 		<filter-name>CompanyChangePasswordFilter2</filter-name>
 		<servlet-name>CompanyChangePasswordServlet</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CreateJobListingFilter</filter-name>
+		<url-pattern>/CreateJobListingFilter</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CreateJobListingFilter</filter-name>
+		<servlet-name>CreateJobListingServlet</servlet-name>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
 	<servlet>
@@ -65,6 +81,13 @@
 		<servlet-name>CompanyChangePasswordServlet</servlet-name>
 		<servlet-class>com.avensys.controller.CompanyChangePasswordServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>CreateJobListingServlet</display-name>
+		<servlet-name>CreateJobListingServlet</servlet-name>
+		<servlet-class>com.avensys.controller.CreateJobListingServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>CompanyRegistrationServlet</servlet-name>
 		<url-pattern>/CompanyRegistrationServlet</url-pattern>
@@ -76,6 +99,10 @@
 	<servlet-mapping>
 		<servlet-name>CompanyChangePasswordServlet</servlet-name>
 		<url-pattern>/CompanyChangePasswordServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreateJobListingServlet</servlet-name>
+		<url-pattern>/CreateJobListingServlet</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

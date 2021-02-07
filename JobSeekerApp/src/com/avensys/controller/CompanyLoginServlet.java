@@ -26,6 +26,8 @@ public class CompanyLoginServlet extends HttpServlet {
 			String email;
 			String password;
 			//String accountType;
+			
+			System.out.println("COMPANY LOGIN SERVLET");
 	
 			email = req.getParameter("email");
 			password = req.getParameter("password");

@@ -15,5 +15,6 @@
 	</br>
 	
 	<button type="button" onClick=window.location.href="/JobSeekerApp/Homepage/changePasswordPage.jsp">Change Password</button>
+	<button type="button" onClick=window.location.href="/JobSeekerApp/JobListing/createJobListing.jsp">Create Listing</button>
 </body>
 </html>

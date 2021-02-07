@@ -1,10 +1,13 @@
 package com.avensys.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class CompanyModel {
 
@@ -107,6 +110,74 @@ public class CompanyModel {
 				return 1;
 			}
 		} catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	public int createNewListing(String title, String desc, String username, String address, String datetime, String pay) throws Exception
+	{
+		
+		try {
+			String sql = "INSERT INTO jobposting VALUES(?,?,?,?,?,?,?,?)";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			
+			int jobId = getJobCount() + 1;
+			String formattedDatetime = formatDateTime(datetime);
+			
+			pstmt.setInt(1, jobId);
+			pstmt.setString(2, title);
+			pstmt.setString(3,  desc);
+			pstmt.setString(4, username);
+			pstmt.setString(5, address);
+			pstmt.setTimestamp(6, java.sql.Timestamp.valueOf(formattedDatetime)); // 2021-02-07T17:30
+			pstmt.setDouble(7, Double.parseDouble(pay));
+			pstmt.setInt(8, 1);
+			
+			int result = pstmt.executeUpdate();
+			
+			return result;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	/*
+	 * Format the date time string into yyyy-mm-dd hh:mm:ss
+	 * so it can be inserted into the DB
+	 * */
+	public String formatDateTime(String datetime)
+	{
+		StringBuilder formattedDatetime = new StringBuilder(datetime);
+		
+		formattedDatetime.setCharAt(10, ' ');
+		
+		// Original date time does not comes with ss, so have to concat to the end
+		return formattedDatetime.toString().concat(":00");
+	}
+	
+	public int getJobCount()
+	{
+		try
+		{
+			String sql = "SELECT COUNT(*) FROM jobposting";
+			
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				System.out.println("Job Count: " + rs.getString(1));
+				return Integer.parseInt(rs.getString(1));
+			}
+		} catch(SQLException e)
 		{
 			e.printStackTrace();
 		}
