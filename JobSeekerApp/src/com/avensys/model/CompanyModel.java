@@ -148,6 +148,26 @@ public class CompanyModel {
 		return 0;
 	}
 	
+	public ResultSet displayJobListing()
+	{
+		try
+		{
+			String sql = "SELECT * FROM jobposting";
+			
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			return rs;
+			
+		} catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
 	/*
 	 * Format the date time string into yyyy-mm-dd hh:mm:ss
 	 * so it can be inserted into the DB

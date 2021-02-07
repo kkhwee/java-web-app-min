@@ -18,7 +18,6 @@ public class CreateJobListingServlet extends HttpServlet {
 	{	
 		try
 		{
-			System.out.println("CREATE JOB LISTING SERVLET");
 			String title;
 			String userName;
 			String email;
@@ -26,7 +25,6 @@ public class CreateJobListingServlet extends HttpServlet {
 			String address;
 			String reportingDateTime;
 			String pay;
-			int status;
 			
 			HttpSession session = req.getSession();
 			
@@ -38,12 +36,6 @@ public class CreateJobListingServlet extends HttpServlet {
 			
 			reportingDateTime = req.getParameter("jobdatetime");
 			pay = req.getParameter("jobpay");
-			
-			System.out.println("TESTING TESTING");
-			System.out.println("Job lisint: " + reportingDateTime);
-			System.out.println("Job lisint: " + pay);
-			
-			status = 1;
 			
 			email = (String)session.getAttribute("email");
 			

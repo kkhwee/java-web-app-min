@@ -16,15 +16,15 @@
 		
 		<label>Description: (Enter at most 200 characters.)</label>
 		</br>
-		<!--  <textarea name="jobdescrpition" rows="4" cols="50"></textarea> -->
-		<input type="text" name="jobdescription">
+		<textarea name="jobdescription" rows="4" cols="50"></textarea>
+		<!--<input type="text" name="jobdescription"> -->
 		
 		</br></br>
 		
 		<label>Address: </label>
 		</br>
-		<!--  <textarea name="jobaddress" rows="3" cols="40"></textarea> -->
-		<input type="text" name="jobaddress">
+		<textarea name="jobaddress" rows="3" cols="40"></textarea>
+		<!-- <input type="text" name="jobaddress"> -->
 		
 		</br></br>
 		
