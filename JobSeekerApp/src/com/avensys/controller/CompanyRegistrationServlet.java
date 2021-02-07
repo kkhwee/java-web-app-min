@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.avensys.model.CompanyModel;
 import com.avensys.model.CompanyRegistrationModel;
 
 /**
@@ -23,12 +24,12 @@ public class CompanyRegistrationServlet extends HttpServlet {
 		email = req.getParameter("email");
 		password = req.getParameter("password");
 		
-		CompanyRegistrationModel m = new CompanyRegistrationModel();
+		CompanyModel m = new CompanyModel();
 		
 		// connect to database
 		m.connect();
 		
-		m.setUser(user);
+		m.setUserName(user);
 		m.setEmail(email);
 		m.setPassword(password);
 		

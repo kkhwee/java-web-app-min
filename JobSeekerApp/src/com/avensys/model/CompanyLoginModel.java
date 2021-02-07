@@ -7,8 +7,10 @@ import java.sql.ResultSet;
 
 public class CompanyLoginModel {
 	
+	private String userName;
 	private String password;
 	private String email;
+	private final String accountType = "Company";
 	
 	Connection con;
 	PreparedStatement pstmt;
@@ -39,8 +41,13 @@ public class CompanyLoginModel {
 			pstmt.setString(1, email);
 			pstmt.setString(2, password);
 			
-			if(pstmt.executeQuery().next())
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next() == true)
 			{
+//				userName = rs.getString(1);
+//				email = rs.getString(2);
+//				password = rs.getString(3);
+//				accountType = rs.getString(4);
 				return 1;
 			}
 			
@@ -52,6 +59,11 @@ public class CompanyLoginModel {
 		return 0;
 	}
 	
+	public String getEmail()
+	{
+		return this.email;
+	}
+	
 	public void setEmail(String email)
 	{
 		this.email = email;
@@ -61,4 +73,17 @@ public class CompanyLoginModel {
 	{
 		this.password = password;
 	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getAccountType() {
+		return accountType;
+	}
+
 }

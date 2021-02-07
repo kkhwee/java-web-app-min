@@ -29,6 +29,20 @@
 		<filter-name>CompanyLoginFilter</filter-name>
 		<filter-class>CompanyLoginFilter</filter-class>
 	</filter>
+	<filter>
+		<description>
+		</description>
+		<display-name>CompanyChangePasswordFilter2</display-name>
+		<filter-name>CompanyChangePasswordFilter2</filter-name>
+		<filter-class>CompanyChangePasswordFilter2</filter-class>
+	</filter>
+	<filter>
+		<description>
+		</description>
+		<display-name>CreateJobListingFilter</display-name>
+		<filter-name>CreateJobListingFilter</filter-name>
+		<filter-class>CreateJobListingFilter</filter-class>
+	</filter>
 	<filter-mapping>
 		<filter-name>CompanyRegistrationFilter</filter-name>
 		<url-pattern>/CompanyRegistrationFilter</url-pattern>
@@ -41,6 +55,24 @@
 	<filter-mapping>
 		<filter-name>CompanyLoginFilter</filter-name>
 		<url-pattern>/CompanyLoginFilter</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CompanyChangePasswordFilter2</filter-name>
+		<url-pattern>/CompanyChangePasswordFilter2</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CompanyChangePasswordFilter2</filter-name>
+		<servlet-name>CompanyChangePasswordServlet</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CreateJobListingFilter</filter-name>
+		<url-pattern>/CreateJobListingFilter</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CreateJobListingFilter</filter-name>
+		<servlet-name>CreateJobListingServlet</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>JobSeekerFilter</filter-name>
@@ -77,6 +109,20 @@
 	<servlet>
 		<description>
 		</description>
+		<display-name>CompanyChangePasswordServlet</display-name>
+		<servlet-name>CompanyChangePasswordServlet</servlet-name>
+		<servlet-class>com.avensys.controller.CompanyChangePasswordServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>CreateJobListingServlet</display-name>
+		<servlet-name>CreateJobListingServlet</servlet-name>
+		<servlet-class>com.avensys.controller.CreateJobListingServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
 		<display-name>Login</display-name>
 		<servlet-name>Login</servlet-name>
 		<servlet-class>com.avensys.controller.Login</servlet-class>
@@ -102,6 +148,14 @@
 	<servlet-mapping>
 		<servlet-name>CompanyLoginServlet</servlet-name>
 		<url-pattern>/CompanyLoginServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CompanyChangePasswordServlet</servlet-name>
+		<url-pattern>/CompanyChangePasswordServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreateJobListingServlet</servlet-name>
+		<url-pattern>/CreateJobListingServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Login</servlet-name>
