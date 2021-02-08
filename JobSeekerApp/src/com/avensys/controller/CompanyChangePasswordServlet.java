@@ -46,7 +46,7 @@ public class CompanyChangePasswordServlet extends HttpServlet {
 			return;
 		}
 
-		CompanyModel m = new CompanyModel();
+		CompanyModel m = (CompanyModel)session.getAttribute("model");
 		
 		m.connect();
 		
@@ -58,6 +58,7 @@ public class CompanyChangePasswordServlet extends HttpServlet {
 		{
 			// change password success
 			session.setAttribute( "password", newPassword);
+			session.setAttribute("model", m);
 			res.sendRedirect("/JobSeekerApp/Homepage/companyHomePage.jsp");
 		}
 		else

@@ -29,6 +29,27 @@
 		<filter-name>CreateJobListingFilter</filter-name>
 		<filter-class>CreateJobListingFilter</filter-class>
 	</filter>
+	<filter>
+		<description>
+		</description>
+		<display-name>CompanyEditJobListingFilter</display-name>
+		<filter-name>CompanyEditJobListingFilter</filter-name>
+		<filter-class>CompanyEditJobListingFilter</filter-class>
+	</filter>
+	<filter>
+		<description>
+		</description>
+		<display-name>UpdateListingStatusFilter</display-name>
+		<filter-name>UpdateListingStatusFilter</filter-name>
+		<filter-class>UpdateListingStatusFilter</filter-class>
+	</filter>
+	<filter>
+		<description>
+		</description>
+		<display-name>DeleteListingFilter</display-name>
+		<filter-name>DeleteListingFilter</filter-name>
+		<filter-class>DeleteListingFilter</filter-class>
+	</filter>
 	<filter-mapping>
 		<filter-name>CompanyRegistrationFilter</filter-name>
 		<url-pattern>/CompanyRegistrationFilter</url-pattern>
@@ -60,6 +81,33 @@
 		<servlet-name>CreateJobListingServlet</servlet-name>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CompanyEditJobListingFilter</filter-name>
+		<url-pattern>/CompanyEditJobListingFilter</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CompanyEditJobListingFilter</filter-name>
+		<servlet-name>UpdateListingServlet</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UpdateListingStatusFilter</filter-name>
+		<url-pattern>/UpdateListingStatusFilter</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UpdateListingStatusFilter</filter-name>
+		<servlet-name>UpdateListingStatusServlet</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>DeleteListingFilter</filter-name>
+		<url-pattern>/DeleteListingFilter</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>DeleteListingFilter</filter-name>
+		<servlet-name>DeleteListingServlet</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
 	<servlet>
 		<description>
 		</description>
@@ -88,6 +136,27 @@
 		<servlet-name>CreateJobListingServlet</servlet-name>
 		<servlet-class>com.avensys.controller.CreateJobListingServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>UpdateListingServlet</display-name>
+		<servlet-name>UpdateListingServlet</servlet-name>
+		<servlet-class>com.avensys.controller.UpdateListingServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>DeleteListingServlet</display-name>
+		<servlet-name>DeleteListingServlet</servlet-name>
+		<servlet-class>com.avensys.controller.DeleteListingServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>UpdateListingStatusServlet</display-name>
+		<servlet-name>UpdateListingStatusServlet</servlet-name>
+		<servlet-class>com.avensys.controller.UpdateListingStatusServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>CompanyRegistrationServlet</servlet-name>
 		<url-pattern>/CompanyRegistrationServlet</url-pattern>
@@ -103,6 +172,18 @@
 	<servlet-mapping>
 		<servlet-name>CreateJobListingServlet</servlet-name>
 		<url-pattern>/CreateJobListingServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateListingServlet</servlet-name>
+		<url-pattern>/UpdateListingServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteListingServlet</servlet-name>
+		<url-pattern>/DeleteListingServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateListingStatusServlet</servlet-name>
+		<url-pattern>/UpdateListingStatusServlet</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
