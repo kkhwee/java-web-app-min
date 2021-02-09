@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="ISO-8859-1">
+    <title>Company Login</title>
 </head>
+
 <body>
-This a company page
+
+    <form action="/JobSeekerApp/CompanyLoginServlet">
+        <label for="emailLabel">Email: </label>
+        <input type="text" name="email">
+
+        </br></br>
+
+        <label for="passwordLabel">Password:</label>
+        <input type="password" name="password">
+
+        </br></br>
+
+        <button type="submit" onClick=window.location.href="/JobSeekerApp/Homepage/companyHomePage.html">Login</button>
+        
+    </form>
+    
+	<button type="button" onClick=window.location.href="/JobSeekerApp/Registration/companyRegistration.html">Register Company</button>
+	
 </body>
+
 </html>
