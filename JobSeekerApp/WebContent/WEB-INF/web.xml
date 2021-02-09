@@ -240,6 +240,13 @@
 		<servlet-name>JobSeekerLogout</servlet-name>
 		<servlet-class>com.avensys.controller.JobSeekerLogout</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>CompanyLogoutServlet</display-name>
+		<servlet-name>CompanyLogoutServlet</servlet-name>
+		<servlet-class>com.avensys.controller.CompanyLogoutServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>CompanyRegistrationServlet</servlet-name>
 		<url-pattern>/CompanyRegistrationServlet</url-pattern>
@@ -287,6 +294,10 @@
 	<servlet-mapping>
 		<servlet-name>JobSeekerLogout</servlet-name>
 		<url-pattern>/JobSeekerLogout</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CompanyLogoutServlet</servlet-name>
+		<url-pattern>/CompanyLogoutServlet</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
