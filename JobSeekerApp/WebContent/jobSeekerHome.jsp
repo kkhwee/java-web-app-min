@@ -9,6 +9,7 @@
 <body>
 	<button type="button" class="btn btn-light" onClick=window.location.href="/JobSeekerApp/ChangePassword.jsp">Change Password</button>
 	<%
+
 	final String register = "register";
 	final String login = "login";
 	final String changepw = "changePw";

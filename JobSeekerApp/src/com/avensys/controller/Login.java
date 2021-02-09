@@ -35,7 +35,7 @@ public class Login extends HttpServlet {
 			HttpSession session = req.getSession(true);
 			session.setAttribute("username", username);
 			session.setAttribute("prevAction", "login");
-			res.sendRedirect("/JobSeekerApp/jobSeekerHome.jsp");
+			res.sendRedirect("/JobSeekerApp/userHome.jsp");
 		}
 	}
 	

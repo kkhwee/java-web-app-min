@@ -1,3 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="com.avensys.model.JobPostingModel" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,25 +20,47 @@
 
 <link rel="stylesheet" href="/JobSeekerApp/style.css"/>
 <meta charset="ISO-8859-1">
-<title>User Home Page</title>
+<title>Job Seeker Home</title>
 </head>
 <body>
+	<%
+	JobPostingModel jobPosting = new JobPostingModel();
+	jobPosting.connect();
+	%>
+
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Job Seeker Home</a>
+      <a class="navbar-brand" href="index.html">Job Seeker Home Page</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+        <%
+        if(session.getAttribute("username")==null)
+        {
+        %>
           <li class="nav-item">
             <a class="nav-link" href="/JobSeekerApp/userLogin.html">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/JobSeekerApp/userRegister.html">Register</a>
           </li>
-          <li class="nav-item dropdown">
+        <%
+        }
+        else{
+        %>
+          <li class="nav-item">
+            <a class="nav-link" href="/JobSeekerApp/ChangePassword.jsp">Change Password</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/JobSeekerApp/userRegister.html">Log Out</a>
+          </li>
+        <%
+        }
+        %>
+         <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Blog
             </a>
@@ -39,7 +69,7 @@
               <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
               <a class="dropdown-item" href="blog-post.html">Blog Post</a>
             </div>
-          </li>
+          </li>-->
         </ul>
       </div>
     </div>
@@ -74,9 +104,28 @@
 
   <!-- Page Content -->
   <div class="container">
-
-    <h1 class="my-4">Welcome to Job Seeker Home</h1>
-
+	<%
+	if(session.getAttribute("prevAction") != null)
+	{
+		if(session.getAttribute("prevAction").equals("changePw"))
+		{
+	%>	
+	    	<h1 class="my-4">Password successfully changed</h1>
+		<%
+		}
+		else{
+		%>
+		<h1 class="my-4">Welcome, <%out.println(session.getAttribute("username")); %></h1>
+	<%
+		}
+	}
+	else
+	{
+	%>
+		<h1 class="my-4">Welcome to Job Seeker Home</h1>
+	<%
+	} 
+	%>
     <!-- Marketing Icons Section -->
     <!-- <div class="row">
       <div class="col-lg-4 mb-4">
@@ -116,93 +165,42 @@
     <!-- /.row -->
 
     <!-- Portfolio Section -->
-    <h2>Portfolio Heading</h2>
+    <h2>Job Listing</h2>
 
     <div class="row">
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project One</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Two</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Three</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Four</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Five</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Six</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
+    <%
+	ResultSet rs = jobPosting.getAllJobPosting();
+    while(rs.next())
+    {
+   		if(rs.getString("status").equals("1"))
+   		{
+    %>
+	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	        <div class="card h-100">
+	          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+	          <div class="card-body">
+	            <h4 class="card-title">
+	              <input type="hidden" name="jobID" value="<% out.println(rs.getString("jobID"));%>"/>
+	              <a href="#"><% out.println(rs.getString("title"));%></a>
+	            </h4>
+	            <p class="card-text"><%out.println(rs.getString("description")); %></p>
+	          </div>
+	          <%
+	          	if(!(session.getAttribute("username") == null))
+	          	{
+	          %>
+		          <div class="card-footer">
+		            <a href="/JobSeekerApp/CreateJobRequestServlet?jobID=<%out.println(rs.getString("jobID"));%>" class="btn btn-primary">Apply Now</a>
+		          </div>
+	          <%
+	        	}
+	          %>
+	        </div>
+	      </div>
+    <%
+    	}
+    }
+    %>
     </div>
     <!-- /.row -->
 

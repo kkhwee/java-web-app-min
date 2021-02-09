@@ -24,7 +24,7 @@ public class CompanyModel {
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("Driver loaded");
-			this.con = DriverManager.getConnection("jdbc:MySQL://localhost/JOBSEEKPROJECT", "root", "root");
+			this.con = DriverManager.getConnection("jdbc:MySQL://localhost/jobseekproject", "root", "root");
 			System.out.println("Connection to DB establised");
 		} catch(Exception e)
 		{

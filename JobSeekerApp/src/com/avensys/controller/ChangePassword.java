@@ -42,7 +42,7 @@ public class ChangePassword extends HttpServlet {
 					session.setAttribute("email", user.getEmail());
 					session.setAttribute("accountType", user.getAccountType());
 					session.setAttribute("prevAction","changePw");
-					res.sendRedirect("/JobSeekerApp/jobSeekerHome.jsp");
+					res.sendRedirect("/JobSeekerApp/userHome.jsp");
 				}
 			}
 		}
