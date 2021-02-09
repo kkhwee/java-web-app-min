@@ -34,7 +34,7 @@ public class Register extends HttpServlet {
 			HttpSession session = req.getSession(true);
 			session.setAttribute("prevAction", "register");
 			session.setAttribute("username", username);
-			res.sendRedirect("/JobSeekerApp/jobSeekerHome.jsp");
+			res.sendRedirect("/JobSeekerApp/userHome.jsp");
 		}
 	}
 	

@@ -243,6 +243,13 @@
 	<servlet>
 		<description>
 		</description>
+		<display-name>JobSeekerForgetPassword</display-name>
+		<servlet-name>JobSeekerForgetPassword</servlet-name>
+		<servlet-class>com.avensys.controller.JobSeekerForgetPassword</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
 		<display-name>CompanyLogoutServlet</display-name>
 		<servlet-name>CompanyLogoutServlet</servlet-name>
 		<servlet-class>com.avensys.controller.CompanyLogoutServlet</servlet-class>
@@ -294,6 +301,10 @@
 	<servlet-mapping>
 		<servlet-name>JobSeekerLogout</servlet-name>
 		<url-pattern>/JobSeekerLogout</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>JobSeekerForgetPassword</servlet-name>
+		<url-pattern>/JobSeekerForgetPassword</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>CompanyLogoutServlet</servlet-name>
