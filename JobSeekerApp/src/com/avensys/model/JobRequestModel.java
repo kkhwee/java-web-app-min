@@ -49,7 +49,7 @@ public class JobRequestModel {
 	public ResultSet getMyJobRequest() {
 		try
 		{
-			String sql = "SELECT * FROM jobposting WHERE username=?";
+			String sql = "SELECT * FROM jobrequest WHERE username=?";
 			
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, this.jobSeekerID);

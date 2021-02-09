@@ -44,11 +44,19 @@ public class CreateJobRequestServlet extends HttpServlet {
 		jr.setJobSeekerID(username);
 		jr.setJobReqStatus("1");
 		int i = (int) (new Date().getTime()/1000);
-		String jobReqID = username.substring(0,5) + i;
+		String jobReqID = username.substring(0,2) + i;
 		jr.setJobReqID(jobReqID);
-		jr.submitJobRequest();
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int  rs = jr.submitJobRequest();
+		if(rs != 0) 
+		{
+			session.setAttribute("prevAction", "createJobRequest");
+			response.sendRedirect("/JobSeekerApp/userHome.jsp");
+		}
+		else 
+		{
+			response.sendRedirect("/JobSeekerApp/common-page/errorPage.jsp");
+		}
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 	
 //

@@ -55,7 +55,7 @@
             <a class="nav-link" href="/JobSeekerApp/ChangePassword.jsp">Change Password</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/JobSeekerApp/userRegister.html">Log Out</a>
+            <a class="nav-link" href="/JobSeekerApp/JobSeekerLogout">Log Out</a>
           </li>
         <%
         }
@@ -183,6 +183,7 @@
 	              <input type="hidden" name="jobID" value="<% out.println(rs.getString("jobID"));%>"/>
 	              <a href="#"><% out.println(rs.getString("title"));%></a>
 	            </h4>
+	            <p class="card-text"><small class="text-muted"><%out.println(rs.getString("Employer")); %></small></p>
 	            <p class="card-text"><%out.println(rs.getString("description")); %></p>
 	          </div>
 	          <%

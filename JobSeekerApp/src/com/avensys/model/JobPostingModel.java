@@ -50,6 +50,7 @@ public class JobPostingModel {
 		return null;
 	}
 	
+	
 	public int getJobID() {
 		return jobID;
 	}
