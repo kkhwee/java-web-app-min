@@ -23,16 +23,17 @@
 	
 	<button type="button" onClick=window.location.href="/JobSeekerApp/Homepage/changePasswordPage.jsp">Change Password</button>
 	<button type="button" onClick=window.location.href="/JobSeekerApp/JobListing/createJobListing.jsp">Create Listing</button>
+	<button type="button" onClick=window.location.href="/JobSeekerApp/JobListing/editJobListing.jsp">Edit Listing</button>
 	
 	</br></br></br>
 	
 	<%
-		CompanyModel m = new CompanyModel();
-		m.connect();
+		CompanyModel m = (CompanyModel)session.getAttribute("model");//new CompanyModel();
+		//m.connect();
 		ResultSet rs = m.displayJobListing();
 	%>
 	
-	<table border=1 cellpadding=50>
+	<table border=1 cellpadding=30>
 		<tr>
 			<th>Job ID</th>
 			<th>Title</th>
@@ -57,9 +58,10 @@
 				<td><%out.println(rs.getString("reportingDateTime")); %></td>
 				<td>$<%out.println(rs.getString("pay")); %></td>
 				<td><%if(Integer.parseInt(rs.getString("status")) == 1) {
-					out.println("Available");
-					} else
-						{out.println("No vacancies");} %></td>
+						out.println("Available");
+						} else
+						{out.println("No vacancies");} 
+					%></td>
 			</tr>
 		<%
 			}

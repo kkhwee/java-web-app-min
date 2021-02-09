@@ -53,6 +53,7 @@ public class CompanyLoginServlet extends HttpServlet {
 				session.setAttribute("email", email);
 				session.setAttribute("password", password);
 				session.setAttribute("accountType", m.getAccountType()); // have to get data from log in file
+				session.setAttribute("model", m);
 				
 				// change this to home page later
 				res.sendRedirect("/JobSeekerApp/Homepage/companyHomePage.jsp");

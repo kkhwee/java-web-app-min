@@ -168,6 +168,173 @@ public class CompanyModel {
 		return null;
 	}
 	
+//	// display all job listing created by current user
+	public ResultSet displayUserJobListing()
+	{
+		try
+		{
+			String sql = "SELECT * FROM jobposting WHERE Employer=?";
+			
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userName);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			return rs;
+		} catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public int updateListing(String jobID, String title, String desc, String address, String dateTime, String pay)
+	{
+		try
+		{
+			String sql = "UPDATE jobposting SET title=?, description=?, employerAddress=?, reportingDateTime=?, pay=? WHERE jobID=?";
+//			
+//			System.out.println("Update Listing: " + jobID);
+//			System.out.println("Update Listing: " + title);
+//			System.out.println("Update Listing: " + desc);
+//			System.out.println("Update Listing: " + address);
+//			System.out.println("Update Listing: " + dateTime);
+//			System.out.println("Update Listing: " + pay);
+			
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, desc);
+			pstmt.setString(3, address);
+			pstmt.setTimestamp(4, java.sql.Timestamp.valueOf(formatDateTime(dateTime)));
+			pstmt.setDouble(5, Double.parseDouble(pay));
+			pstmt.setInt(6, Integer.parseInt(jobID));
+			
+			int result = pstmt.executeUpdate();
+			
+			return result;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	public int deleteListing(String jobID)
+	{
+		try
+		{
+			String sql = "DELETE FROM jobposting WHERE jobID=?";
+			
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(jobID));
+			
+			int result = pstmt.executeUpdate();
+			
+			return result;
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	// This function assumes the jobID is correct.
+	public int changeJobStatus(String jobID)
+	{
+		try
+		{
+			String sql = "UPDATE jobposting SET status=? WHERE jobID=?";
+			
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			
+			System.out.println("Inside changJobStatus, jobID is " + jobID);
+			
+			int jobStatus = getJobStatus(jobID);
+			
+			// if available, close vacancy vice versa
+			if(jobStatus == 1)
+			{
+				pstmt.setInt(1, 0);
+			} else
+			{
+				pstmt.setInt(1, 1);
+			}
+			
+			pstmt.setInt(2, Integer.parseInt(jobID));
+			
+			int result = pstmt.executeUpdate();
+			
+			return result;
+		} catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		// dummy int
+		return 0;
+	}
+	
+	public int getJobStatus(String jobID)
+	{
+		try
+		{
+			String sql = "SELECT status FROM jobposting WHERE jobID=?";
+			
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, Integer.parseInt(jobID));
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				System.out.println("Status Obtained: " + rs.getInt("status"));
+				if(rs.getInt("status") == 1)
+				{
+					return 1;
+				}
+			}
+
+		} catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	// check if the job id belongs to current user in session
+	public int checkJobID(int id)
+	{
+		try
+		{
+			String sql = "SELECT * FROM jobposting WHERE jobID=? AND Employer=?";
+			
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, id);
+			pstmt.setString(2, userName);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			System.out.println("Job ID: " + id);
+			
+			if(rs.next())
+			{
+				//System.out.println("Item found");
+				return 1;
+			}
+		} catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
 	/*
 	 * Format the date time string into yyyy-mm-dd hh:mm:ss
 	 * so it can be inserted into the DB

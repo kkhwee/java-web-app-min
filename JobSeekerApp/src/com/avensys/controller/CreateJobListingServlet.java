@@ -39,9 +39,9 @@ public class CreateJobListingServlet extends HttpServlet {
 			
 			email = (String)session.getAttribute("email");
 			
-			CompanyModel m = new CompanyModel();
+			CompanyModel m = (CompanyModel)session.getAttribute("model");//new CompanyModel();
 			
-			m.connect();
+			//m.connect();
 			
 			int result = m.createNewListing(
 					title, 
