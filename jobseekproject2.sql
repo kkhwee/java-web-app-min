@@ -34,17 +34,13 @@ CREATE TABLE `jobposting` (
   PRIMARY KEY (`jobID`),
   KEY `Employer` (`Employer`),
   CONSTRAINT `jobposting_ibfk_1` FOREIGN KEY (`Employer`) REFERENCES `user` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `jobposting`
 --
 
-LOCK TABLES `jobposting` WRITE;
-/*!40000 ALTER TABLE `jobposting` DISABLE KEYS */;
-/*!40000 ALTER TABLE `jobposting` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `jobrequest`
@@ -70,10 +66,6 @@ CREATE TABLE `jobrequest` (
 -- Dumping data for table `jobrequest`
 --
 
-LOCK TABLES `jobrequest` WRITE;
-/*!40000 ALTER TABLE `jobrequest` DISABLE KEYS */;
-/*!40000 ALTER TABLE `jobrequest` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `user`
@@ -90,14 +82,25 @@ CREATE TABLE `user` (
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
 --
 -- Dumping data for table `user`
 --
-
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES ('Alex','alex@gmail.com','123','JobSeeker'),('Avensys','alex@avensys.com','123','Company');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+LOCK TABLES `jobposting` WRITE;
+/*!40000 ALTER TABLE `jobposting` DISABLE KEYS */;
+INSERT INTO `jobposting` VALUES (1,'Java Developer','Java Developer Required For An Web Based Application','Avensys','2 Telok Blangah Way','2021-01-20 21:50:50',3000.00,1),(2,'Senior C# Developer','C# Developer Required For Developing of MOBA games.','Avensys','2 Telok Blangah Way','2021-01-20 21:50:50',6000.00,1),(3,'System Admin','System Admininistrator Required day-to-day operations and book-keeping. No Experience Required','Avensys','2 Telok Blangah Way','2021-01-20 21:50:50',2550.00,1);
+/*!40000 ALTER TABLE `jobposting` ENABLE KEYS */;
+UNLOCK TABLES;
+
+LOCK TABLES `jobrequest` WRITE;
+/*!40000 ALTER TABLE `jobrequest` DISABLE KEYS */;
+INSERT INTO `jobrequest` VALUES ('Al1612863679','Alex',1,1);
+/*!40000 ALTER TABLE `jobrequest` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -109,4 +112,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-05 14:53:46
+-- Dump completed on 2021-02-09 17:42:53

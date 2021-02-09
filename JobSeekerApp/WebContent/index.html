@@ -3,11 +3,56 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Job Seeker</title>
+<link rel="stylesheet" href="/JobSeekerApp/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/JobSeekerApp/css/bootstrap-theme.min.css"/>
+
+<style>
+html,body { 
+	background-image: url('/JobSeekerApp/assets/homebg.jpg');
+	height: 100%;
+}
+
+.innercolumn {
+	width: 500px;
+	height:300px;
+	background: lightgrey;
+	justify-content: center;
+	align-items:center;
+	display:flex;
+	text-align:center;
+}
+.container {
+	height: 100%;
+    display: table;
+    margin-bottom: 6rem !important;
+}
+.titleclass{
+	text-align:center;
+}
+</style>
 </head>
 <body>
+	<div class="container">
+      <div class="d-flex align-items-center justify-content-center" style="height: 100%">
+		  <div class="innercolumn p-2 bd-highlight col-example">
+		  	<div>
+  				<h3 class="titleclass">Are you a company or job seeker?</h3> </br>
+				<button type="button" class="btn btn-dark" onClick=window.location.href="/JobSeekerApp/companyPage.html">Company</button>
+				<button type="button" class="btn btn-dark" onClick=window.location.href="/JobSeekerApp/userHome.jsp">Job Seeker</button>
+			</div>
+		  </div>
+      </div>
+	</div>
 
-	<P>Are you a company or job seeker?</P> </br>
-	<button type="button" onClick=window.location.href="/JobSeekerApp/companyPage.html">Company</button>
-	<button type="button" onClick=window.location.href="/JobSeekerApp/userHome.jsp">Job Seeker</button>
+	<!-- 
+	<div class="h-100 row align-items-center">
+	  <div class="col" class="innercolumn" ">
+		<P>Are you a company or job seeker?</P> </br>
+		<button type="button" onClick=window.location.href="/JobSeekerApp/companyPage.html">Company</button>
+		<button type="button" onClick=window.location.href="/JobSeekerApp/userHome.jsp">Job Seeker</button>
+	  </div>
+	</div>-->
+<script src="/JobSeekerApp/js/jquery.js"></script>
+<script src="/JobSeekerApp/js/bootstrap.js"></script>
 </body>
 </html>
