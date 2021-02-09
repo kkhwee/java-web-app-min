@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class JobPostingModel {
 	private int jobID;
@@ -15,6 +17,7 @@ public class JobPostingModel {
 	private String reportingDateTime;
 	private String pay;
 	private String status;
+	private HashMap<String,JobPostingRequestModel> jobRequestList;
 	Connection con;
 	
 	public void connect()
@@ -25,6 +28,7 @@ public class JobPostingModel {
 			System.out.println("Driver loaded");
 			this.con = DriverManager.getConnection("jdbc:MySQL://localhost/jobseekproject", "root", "root");
 			System.out.println("Connection to DB establised");
+			jobRequestList = new HashMap<String,JobPostingRequestModel>();
 		} catch(Exception e)
 		{
 			e.printStackTrace();
@@ -41,6 +45,83 @@ public class JobPostingModel {
 			ResultSet rs = pstmt.executeQuery();
 			
 			return rs;
+			
+		} catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public HashMap<String,JobPostingRequestModel> getRelatedJobRequest(String username) {
+		try
+		{
+			// String sql = "SELECT * FROM jobrequest where jobID = ? and username = ?";
+			// This became a 1 to 1 relationship because one user can only make 1 job request to a single posting.
+			String tempsql = "Select * from jobposting INNER JOIN jobrequest On jobposting.jobID=jobrequest.jobID WHERE username=?";
+			
+			PreparedStatement pstmt = con.prepareStatement(tempsql);
+//			pstmt.setInt(1, this.jobID);
+			pstmt.setString(1, username);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+
+				JobPostingRequestModel jr = new JobPostingRequestModel();
+				String jobID = rs.getString("jobID");
+				jr.setJobID(jobID);
+				jr.setTitle(rs.getString("title"));
+				jr.setDescription(rs.getString("description"));
+				jr.setCompany(rs.getString("Employer"));
+				jr.setCompanyAddress(rs.getString("employerAddress"));
+				jr.setReportingDateTime(rs.getString("reportingDateTime"));
+				jr.setPay(rs.getString("pay"));
+				jr.setStatus(rs.getString("status"));
+				jr.setJobReqID(rs.getString("jobReqID"));
+				jr.setJobSeekerID(rs.getString("username"));
+				jr.setJobReqStatus(rs.getString("jobReqStatus"));
+				jobRequestList.put(jobID, jr);
+			}
+			return jobRequestList;
+			
+		} catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public ArrayList<JobPostingRequestModel> getJobRequestByJobID() {
+		try
+		{
+			String tempsql = "Select * from jobposting INNER JOIN jobrequest On jobposting.jobID=jobrequest.jobID WHERE jobrequest.jobID=?";
+			
+			PreparedStatement pstmt = con.prepareStatement(tempsql);
+//			pstmt.setInt(1, this.jobID);
+//			String strJobID = Integer.toString(jobID);
+			pstmt.setInt(1, jobID);
+			ResultSet rs = pstmt.executeQuery();
+			ArrayList<JobPostingRequestModel> returnList = new ArrayList<JobPostingRequestModel>();
+			while(rs.next()) {
+
+				JobPostingRequestModel jr = new JobPostingRequestModel();
+				String jobID = rs.getString("jobID");
+				jr.setJobID(jobID);
+				jr.setTitle(rs.getString("title"));
+				jr.setDescription(rs.getString("description"));
+				jr.setCompany(rs.getString("Employer"));
+				jr.setCompanyAddress(rs.getString("employerAddress"));
+				jr.setReportingDateTime(rs.getString("reportingDateTime"));
+				jr.setPay(rs.getString("pay"));
+				jr.setStatus(rs.getString("status"));
+				jr.setJobReqID(rs.getString("jobReqID"));
+				jr.setJobSeekerID(rs.getString("username"));
+				jr.setJobReqStatus(rs.getString("jobReqStatus"));
+				returnList.add(jr);
+			}
+			return returnList;
 			
 		} catch(SQLException e)
 		{
@@ -98,6 +179,12 @@ public class JobPostingModel {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public HashMap<String,JobPostingRequestModel> getJobRequestList() {
+		return jobRequestList;
+	}
+	public void setStatus(HashMap<String,JobPostingRequestModel> jobRequestList) {
+		this.jobRequestList = jobRequestList;
 	}
 
 }

@@ -98,6 +98,7 @@ html,body {
 					<th>Report Date Time</th>
 					<th>Pay</th>
 					<th>Status</th>
+					<th>Actions</th>
 				</tr>
 				
 				<%
@@ -117,6 +118,9 @@ html,body {
 								} else
 								{out.println("No vacancies");} 
 							%></td>
+						<td>
+							<a href="/JobSeekerApp/ViewJobRequestList?jobID=<%out.println(rs.getString("jobID"));%>" class="btn btn-primary">View Job Request</a>
+						</td>
 					</tr>
 				<%
 					}

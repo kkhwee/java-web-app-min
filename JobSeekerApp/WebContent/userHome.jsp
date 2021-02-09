@@ -5,7 +5,9 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="com.avensys.model.JobPostingModel" %>
+<%@page import="com.avensys.model.JobPostingRequestModel" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -168,14 +170,18 @@
     <h2>Job Listing</h2>
 
     <div class="row">
+    
     <%
 	ResultSet rs = jobPosting.getAllJobPosting();
-    while(rs.next())
+    if(!(session.getAttribute("username") == null))
     {
-   		if(rs.getString("status").equals("1"))
-   		{
-    %>
-	      <div class="col-lg-4 col-sm-6 portfolio-item">
+    	String username = (String)session.getAttribute("username");
+    	HashMap<String, JobPostingRequestModel> relatedJobs = jobPosting.getRelatedJobRequest(username);
+        while(rs.next())
+        {
+        	String currJobID = rs.getString("jobID");
+        %>
+  	      <div class="col-lg-4 col-sm-6 portfolio-item">
 	        <div class="card h-100">
 	          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
 	          <div class="card-body">
@@ -187,21 +193,78 @@
 	            <p class="card-text"><%out.println(rs.getString("description")); %></p>
 	          </div>
 	          <%
-	          	if(!(session.getAttribute("username") == null))
-	          	{
+	          if(relatedJobs.containsKey(currJobID) )
+	          {
+	        	  // print status
+	          %>
+	        	    <%
+	        	  	if(relatedJobs.get(currJobID).getJobReqStatus().equals("1"))
+	        	  	{
+	        	  		// Pending Status
+	        	  	%>
+			          <div class="card-footer btn btn-light">
+			            Pending
+			          </div>
+	        	  	<%
+	        	  	}
+	        	  	else if(relatedJobs.get(currJobID).getJobReqStatus().equals("2"))
+	        	  	{%>
+			          <div class="card-footer btn btn-light">
+			            Accepted
+			          </div>
+	        	  	<%
+	        	  	}
+	        	  	else
+	        	  	{%>
+			          <div class="card-footer btn btn-light">
+			            Rejected
+			          </div>
+	        	  	<%	
+	        	  	}
+	        	    %>
+
+	          <%
+	          }
+	          else
+	          {
+	        	// show apply button.
 	          %>
 		          <div class="card-footer">
 		            <a href="/JobSeekerApp/CreateJobRequestServlet?jobID=<%out.println(rs.getString("jobID"));%>" class="btn btn-primary">Apply Now</a>
 		          </div>
 	          <%
-	        	}
+	          }
 	          %>
 	        </div>
 	      </div>
-    <%
+    <%  
     	}
     }
+    else
+    {
+    	//user is not logged on so get all jobs.
+        while(rs.next())
+        {
+       		if(rs.getString("status").equals("1"))
+       		{%>
+	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	        <div class="card h-100">
+	          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+	          <div class="card-body">
+	            <h4 class="card-title">
+	              <input type="hidden" name="jobID" value="<% out.println(rs.getString("jobID"));%>"/>
+	              <a href="#"><% out.println(rs.getString("title"));%></a>
+	            </h4>
+	            <p class="card-text"><small class="text-muted"><%out.println(rs.getString("Employer")); %></small></p>
+	            <p class="card-text"><%out.println(rs.getString("description")); %></p>
+	          </div>
+     	    </div>
+	      </div>
+       		<%}
+        }
+    }
     %>
+
     </div>
     <!-- /.row -->
 

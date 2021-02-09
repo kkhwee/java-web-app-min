@@ -64,9 +64,23 @@ public class JobRequestModel {
 		return null;
 	}
 	
-	public ResultSet updateJobStatus() {
-		//TODO: UPDATE JOB REQ STATUS
-		return null;
+	public int updateJobStatus() {
+		try
+		{
+			String sql = "UPDATE jobrequest SET jobReqStatus = ? WHERE jobReqID = ?";
+			
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, this.jobReqStatus);
+			pstmt.setString(2, this.jobReqID);
+			int rs = pstmt.executeUpdate();
+			return rs;
+
+			
+		} catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	//TODO: DEL JOB REQ

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class JobSeekerForgetPassword
  */
 public class JobSeekerForgetPassword extends HttpServlet {
-	protected void service(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
 	}
 

@@ -254,6 +254,27 @@
 		<servlet-name>CompanyLogoutServlet</servlet-name>
 		<servlet-class>com.avensys.controller.CompanyLogoutServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>ViewJobRequestList</display-name>
+		<servlet-name>ViewJobRequestList</servlet-name>
+		<servlet-class>com.avensys.controller.ViewJobRequestList</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>ApproveJobRequest</display-name>
+		<servlet-name>ApproveJobRequest</servlet-name>
+		<servlet-class>com.avensys.controller.ApproveJobRequest</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>RejectJobRequest</display-name>
+		<servlet-name>RejectJobRequest</servlet-name>
+		<servlet-class>com.avensys.controller.RejectJobRequest</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>CompanyRegistrationServlet</servlet-name>
 		<url-pattern>/CompanyRegistrationServlet</url-pattern>
@@ -309,6 +330,18 @@
 	<servlet-mapping>
 		<servlet-name>CompanyLogoutServlet</servlet-name>
 		<url-pattern>/CompanyLogoutServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewJobRequestList</servlet-name>
+		<url-pattern>/ViewJobRequestList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ApproveJobRequest</servlet-name>
+		<url-pattern>/ApproveJobRequest</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RejectJobRequest</servlet-name>
+		<url-pattern>/RejectJobRequest</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

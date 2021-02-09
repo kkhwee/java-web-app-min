@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Job Seeker Login Page</title>
+<title>Forget Password</title>
 <link rel="stylesheet" href="/JobSeekerApp/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="/JobSeekerApp/css/bootstrap-theme.min.css"/>
 <style>
@@ -56,18 +58,11 @@ html,body {
 	<div class="container">
       <div class="d-flex align-items-center justify-content-center" style="height: 100%">
 		  <div class="innercolumn p-2 bd-highlight col-example">
-			<form action="/JobSeekerApp/Login">
-			<h3>Registration</h3>
+			<form action="/JobSeekerApp/JobSeekerForgetPassword">
+			<h3>Reset Password</h3>
 			  <div class="mb-3 form-input-container ">
-			    <label for="labelUsername" class="form-label">Username</label>
-			    <input name="username" class="form-control" id="username" aria-describedby="usernameHelp">
+			    <input name="email" type="email" class="form-control" id="username" placeholder="Email Address" aria-describedby="emailHelp">
 			  </div>
-			  <div class="mb-3">
-			    <label for="inputPassword" class="form-label">Password</label>
-			    <input name="password" type="password" class="form-control" id="inputPassword">
-			    <button type="button" onClick=window.location.href="/JobSeekerApp/JobSeekerForgetPassword.jsp" class="btn btn-link">Forget Password</button>
-			  </div>
-			  <input type="hidden" value="JobSeeker" name="accountType"></input>
 			  <button type="submit" class="btn btn-primary">Submit</button>
 			</form>
 		  </div>
@@ -80,8 +75,5 @@ html,body {
     </div>
     <!-- /.container -->
   </footer>	
-	
-<script src="/JobSeekerApp/js/jquery.js"></script>
-<script src="/JobSeekerApp/js/bootstrap.js"></script>
 </body>
 </html>
