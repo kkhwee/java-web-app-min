@@ -64,7 +64,11 @@ public class JobRequestModel {
 		return null;
 	}
 	
-	//TODO: UPDATE JOB REQ STATUS
+	public ResultSet updateJobStatus() {
+		//TODO: UPDATE JOB REQ STATUS
+		return null;
+	}
+
 	//TODO: DEL JOB REQ
 	
 	public String getJobReqID() {

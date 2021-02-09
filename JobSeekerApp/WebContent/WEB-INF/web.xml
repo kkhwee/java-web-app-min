@@ -64,6 +64,13 @@
 		<filter-name>DeleteListingFilter</filter-name>
 		<filter-class>DeleteListingFilter</filter-class>
 	</filter>
+	<filter>
+		<description>
+		</description>
+		<display-name>JobSeekerRegisterFilter</display-name>
+		<filter-name>JobSeekerRegisterFilter</filter-name>
+		<filter-class>JobSeekerRegisterFilter</filter-class>
+	</filter>
 	<filter-mapping>
 		<filter-name>CompanyRegistrationFilter</filter-name>
 		<url-pattern>/CompanyRegistrationFilter</url-pattern>
@@ -128,7 +135,7 @@
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>JobSeekerFilter</filter-name>
-		<servlet-name>Register</servlet-name>
+		<servlet-name>Login</servlet-name>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
 	<filter-mapping>
@@ -138,6 +145,15 @@
 	<filter-mapping>
 		<filter-name>ChangePasswordFilter</filter-name>
 		<servlet-name>ChangePassword</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>JobSeekerRegisterFilter</filter-name>
+		<url-pattern>/JobSeekerRegisterFilter</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>JobSeekerRegisterFilter</filter-name>
+		<servlet-name>Register</servlet-name>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
 	<servlet>

@@ -10,14 +10,14 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet Filter implementation class JobSeekerFilter
+ * Servlet Filter implementation class JobSeekerRegisterFilter
  */
-public class JobSeekerFilter implements Filter {
+public class JobSeekerRegisterFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public JobSeekerFilter() {
+    public JobSeekerRegisterFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -33,8 +33,10 @@ public class JobSeekerFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		String username = request.getParameter("username");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		if(username.isBlank()  || password.isBlank() ) {
+		String accountType = request.getParameter("accountType");
+		if(username.isBlank() || email.isBlank() || password.isBlank() || accountType.isBlank()) {
 			((HttpServletResponse)response).sendRedirect("/JobSeekerApp/common-page/errorPage.jsp");
 		}
 		else {
