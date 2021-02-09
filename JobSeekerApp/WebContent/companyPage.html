@@ -1,29 +1,105 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Company Login</title>
+<meta charset="ISO-8859-1">
+<title>Company Login</title>
+<link rel="stylesheet" href="/JobSeekerApp/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/JobSeekerApp/css/bootstrap-theme.min.css"/>
+	
+<style>
+html,body { 
+	background-image: url('/JobSeekerApp/assets/sgriver.jpg');
+	height: 100%;
+}
+
+h2{
+	color: azure;
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+}
+
+.innercolumn {
+	width: 500px;
+	height:300px;
+	background: rgba(204, 204, 204, 0.5);
+	justify-content: center;
+	align-items:center;
+	display:flex;
+	text-align:center;
+	border-radius: 25px;
+}
+
+.label {
+  color: white;
+  padding: 8px;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.container {
+	height: 100%;
+    display: table;
+}
+.titleclass{
+    margin-bottom: 5rem !important;
+	text-align:center;
+}
+</style>
 </head>
 
 <body>
 
-    <form action="/JobSeekerApp/CompanyLoginServlet">
-        <label for="emailLabel">Email: </label>
-        <input type="text" name="email">
+<!-- 
+  <div class="container">
+	<div class="d-flex align-items-center justify-content-center" style="height: 100%"></div>
+		<div class="innercolumn p-2 bd-highlight col-example">
+		
+			  	
+			  	<h3 class="titleclass">Are you a company or job seeker?</h3> </br>
+				<button type="button" class="btn btn-dark" onClick=window.location.href="/JobSeekerApp/companyPage.html">Company</button>
+				<button type="button" class="btn btn-dark" onClick=window.location.href="/JobSeekerApp/userHome.jsp">Job Seeker</button> 
+				
+		</div>
+</div> 
 
-        </br></br>
+-->
 
-        <label for="passwordLabel">Password:</label>
-        <input type="password" name="password">
-
-        </br></br>
-
-        <button type="submit" onClick=window.location.href="/JobSeekerApp/Homepage/companyHomePage.html">Login</button>
-        
-    </form>
-    
-	<button type="button" onClick=window.location.href="/JobSeekerApp/Registration/companyRegistration.html">Register Company</button>
+<div class="container">
+	<div class="d-flex align-items-center justify-content-center" style="height: 100%">
+		<div class="innercolumn p-2 bd-highlight col-example">
+		
+		    <form action="/JobSeekerApp/CompanyLoginServlet">
+		    
+		    	<h2>Company Login</h2> <br>
+		        <!-- <label for="emailLabel">Email: </label> -->
+		        <span class="label info">Email: </span>
+		        <input type="text" name="email">
+		
+		        </br></br>
+		
+		        <span class="label info">Password: </span>
+		        <input type="password" name="password">
+		
+		        </br></br>
+		
+		        <button type="submit" class="btn btn-dark" onClick=window.location.href="/JobSeekerApp/Homepage/companyHomePage.html">Login</button>
+		        <button type="button" class="btn btn-dark" onClick=window.location.href="/JobSeekerApp/Registration/companyRegistration.html">Register Company</button>
+		    </form>
+		</div>
+	</div>
+</div>
+	
+<script src="/JobSeekerApp/js/jquery.js"></script>
+<script src="/JobSeekerApp/js/bootstrap.js"></script>
 	
 </body>
 
