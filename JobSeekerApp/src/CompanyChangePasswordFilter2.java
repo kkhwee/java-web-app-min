@@ -39,7 +39,7 @@ public class CompanyChangePasswordFilter2 implements Filter {
 		
 		if(oldPassword.length() == 0 || newPassword.length() == 0 || confirmPassword.length() == 0)
 		{
-			((HttpServletResponse) response).sendRedirect("/JobSeekerApp/Homepage/companyChangePasswordEmptyField.jsp");
+			((HttpServletResponse) response).sendRedirect("/JobSeekerApp/Homepage/companyChangePasswordErrorPage.jsp");
 		}
 		else
 		{

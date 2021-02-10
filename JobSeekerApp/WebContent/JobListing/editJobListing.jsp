@@ -71,7 +71,7 @@ table, th, td {
 
 	<div class="d-flex align-items-center justify-content-center" style="height: 100%">
 		<div class="innercolumn p-2 bd-highlight col-example">
-<div style="overflow: auto; max-height: 500px; background: rgba(204, 204, 204, 0.5);>
+			<div style="overflow: auto; max-height: 500px; background: rgba(204, 204, 204, 0.5);">
 		<form action="/JobSeekerApp/UpdateListingServlet">
 
 		<br><br>
@@ -109,9 +109,10 @@ table, th, td {
 			<br><br>
 				
 			<button type="submit" name="submitlisting">Update</button>
+			
 			<!-- <button type="button" name="deletelisting" onClick=window.location.href="/JobSeekerApp/DeleteListingServlet">Delete</button> -->
 			
-			<br><br><br>
+			<br><br>
 		</form>
 
 

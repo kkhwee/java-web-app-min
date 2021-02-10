@@ -35,23 +35,20 @@ public class CreateJobListingFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		String title;
-		String userName;
-		String email;
 		String jobDescription;
 		String address;
-		LocalDateTime reportingDateTime;
-		double pay;
-		int status;
+		String reportingDateTime;
+		String pay;
 		
 		title = request.getParameter("jobtitle");
 		jobDescription = request.getParameter("jobdescription");
 		address = request.getParameter("jobaddress");
+		reportingDateTime = request.getParameter("jobdatetime");
+		pay = request.getParameter("jobpay");
 		
-		System.out.println("INside JOB LISTING FILTER");
-		
-		if(title.length() == 0 || jobDescription.length() == 0 || address.length() == 0)
+		if(title.length() == 0 || jobDescription.length() == 0 || address.length() == 0 || reportingDateTime.length() == 0 || pay.length() == 0)
 		{
-			((HttpServletResponse) response).sendRedirect("/JobSeekerApp/Homepage/createJobListingErrorPage.jsp");
+			((HttpServletResponse) response).sendRedirect("/JobSeekerApp/JobListing/createJobListingErrorPage.jsp");
 		}
 		else
 		{
