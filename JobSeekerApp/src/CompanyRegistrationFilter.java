@@ -43,7 +43,7 @@ public class CompanyRegistrationFilter implements Filter {
 		if(user.length() == 0 || email.length() == 0 || password.length() == 0)
 		{
 			// need to type cast ServletResponse to HttpServletResponse
-			((HttpServletResponse) response).sendRedirect("/JobSeekerApp/Registration/companyRegistrationEmptyFieldError.html");
+			((HttpServletResponse) response).sendRedirect("/JobSeekerApp/Registration/companyRegistrationFailurePage.html");
 		} 
 		else
 		{

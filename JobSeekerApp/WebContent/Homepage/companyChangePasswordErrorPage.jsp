@@ -61,7 +61,7 @@ h3{
 		
 		
 			<div class="container">
-  				<span class="text" id="myPopup">There is an error editing job listing!</span> <br><br>
+  				<span class="text" id="myPopup">There is an error changing password!</span> <br><br>
   				<button type="button" class="btn btn-dark" onClick=window.location.href="/JobSeekerApp/Homepage/changePasswordPage.jsp">Back</button>
 			</div>
 			
